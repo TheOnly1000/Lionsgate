@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lionsgate Asset Management - Assets Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "primary": "#735c00",
+                "on-primary": "#ffffff",
+                "surface-container-low": "#f3f4f5",
+                "surface-container-highest": "#e1e3e4",
+                "outline-variant": "#d0c5af",
+                "on-primary-fixed-variant": "#574500",
+                "surface-container-high": "#e7e8e9",
+                "surface": "#f8f9fa",
+                "on-secondary-container": "#636262",
+                "surface-tint": "#735c00",
+                "inverse-surface": "#2e3132",
+                "tertiary-container": "#abb4bd",
+                "surface-container": "#edeeef",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-fixed-variant": "#3f484f",
+                "inverse-on-surface": "#f0f1f2",
+                "tertiary": "#575f67",
+                "on-primary-container": "#554300",
+                "tertiary-fixed": "#dbe4ed",
+                "inverse-primary": "#e9c349",
+                "surface-dim": "#d9dadb",
+                "primary-fixed": "#ffe088",
+                "primary-container": "#d4af37",
+                "on-tertiary-fixed": "#141d23",
+                "on-primary-fixed": "#241a00",
+                "surface-bright": "#f8f9fa",
+                "secondary-container": "#e2dfde",
+                "on-secondary": "#ffffff",
+                "secondary": "#5f5e5e",
+                "secondary-fixed": "#e5e2e1",
+                "on-background": "#191c1d",
+                "surface-variant": "#e1e3e4",
+                "on-tertiary-container": "#3d464d",
+                "tertiary-fixed-dim": "#bfc8d0",
+                "error-container": "#ffdad6",
+                "error": "#ba1a1a",
+                "on-surface-variant": "#4d4635",
+                "on-secondary-fixed-variant": "#474746",
+                "on-surface": "#191c1d",
+                "outline": "#7f7663",
+                "on-secondary-fixed": "#1c1b1b",
+                "on-tertiary": "#ffffff",
+                "background": "#f8f9fa",
+                "on-error": "#ffffff",
+                "secondary-fixed-dim": "#c8c6c5",
+                "primary-fixed-dim": "#e9c349",
+                "on-error-container": "#93000a"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "xl": "40px",
+                "lg": "24px",
+                "xs": "4px",
+                "md": "16px",
+                "margin-mobile": "16px",
+                "sm": "12px",
+                "margin-desktop": "48px",
+                "gutter": "24px",
+                "base": "8px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "code": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "body-sm": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "code": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "450"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-md": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+</style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- Header -->
+<header class="bg-surface-container-lowest border-b border-surface-variant px-margin-desktop py-4 flex items-center justify-between sticky top-0 z-50 shadow-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[28px]">movie</span>
+<h1 class="text-body-lg font-semibold text-on-surface tracking-tight">Lionsgate Asset Management</h1>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container border border-surface-variant rounded-full text-body-sm focus:outline-none focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest w-72 transition-colors placeholder:text-on-surface-variant/70" placeholder="Search assets..." type="text"/>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center font-medium text-sm shadow-sm cursor-pointer">
+        JD
+      </div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-margin-desktop py-lg flex gap-xl max-w-[1600px] mx-auto w-full">
+<!-- Sidebar Filters -->
+<aside class="w-[240px] shrink-0 space-y-lg pt-2">
+<div>
+<h2 class="text-label-md text-on-surface-variant uppercase tracking-wider mb-sm font-semibold">Asset Type</h2>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 transition-colors" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Video (1,204)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 transition-colors" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Audio (843)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 transition-colors" type="checkbox"/>
+<span class="text-body-sm text-on-surface-variant group-hover:text-primary transition-colors">Image (3,492)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 transition-colors" type="checkbox"/>
+<span class="text-body-sm text-on-surface-variant group-hover:text-primary transition-colors">Document (412)</span>
+</label>
+</div>
+</div>
+<div class="pt-2">
+<h2 class="text-label-md text-on-surface-variant uppercase tracking-wider mb-sm font-semibold">Status</h2>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 transition-colors" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Approved</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 transition-colors" type="checkbox"/>
+<span class="text-body-sm text-on-surface-variant group-hover:text-primary transition-colors">In Review</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 transition-colors" type="checkbox"/>
+<span class="text-body-sm text-on-surface-variant group-hover:text-primary transition-colors">Draft</span>
+</label>
+</div>
+</div>
+<div class="pt-2">
+<h2 class="text-label-md text-on-surface-variant uppercase tracking-wider mb-sm font-semibold">Franchise</h2>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-md px-3 py-2.5 text-body-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary shadow-sm hover:border-outline transition-colors">
+<option>All Franchises</option>
+<option>John Wick</option>
+<option>The Hunger Games</option>
+<option>Saw</option>
+<option>Twilight</option>
+</select>
+</div>
+</aside>
+<!-- Asset Grid -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-lg border-b border-surface-variant pb-md">
+<h2 class="text-headline-md font-semibold tracking-tight text-on-surface">Assets Library</h2>
+<div class="flex items-center gap-sm">
+<div class="flex items-center bg-surface-container rounded-md p-1 border border-surface-variant">
+<button class="p-1.5 rounded bg-surface-container-lowest shadow-sm text-primary">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+</button>
+<button class="p-1.5 rounded text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm">list</span>
+</button>
+</div>
+<button class="ml-2 px-5 py-2 bg-primary text-on-primary rounded-full hover:bg-surface-tint font-medium flex items-center gap-xs shadow-sm transition-colors text-body-sm">
+<span class="material-symbols-outlined text-sm">upload</span>
+            Upload
+          </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden hover:shadow-lg hover:border-outline-variant transition-all duration-200 group flex flex-col">
+<div class="aspect-video bg-surface-container flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant/40 group-hover:scale-110 transition-transform duration-300">movie</span>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-[2px]">
+<button class="w-12 h-12 bg-white rounded-full text-primary flex items-center justify-center hover:scale-105 transition-transform shadow-lg">
+<span class="material-symbols-outlined text-xl ml-1">play_arrow</span>
+</button>
+</div>
+<span class="absolute top-3 right-3 px-2.5 py-1 bg-[#f0fdf4] border border-[#bbf7d0] rounded-md text-[11px] font-semibold text-[#166534] flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Approved
+            </span>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<h3 class="text-body-md font-semibold text-on-surface truncate mb-1" title="JW4_Trailer_Final_v2.mp4">JW4_Trailer_Final_v2.mp4</h3>
+<p class="text-body-sm text-on-surface-variant mb-4 truncate">John Wick: Chapter 4</p>
+<div class="mt-auto flex items-center justify-between text-[13px] text-on-surface-variant font-medium">
+<span>2.4 GB</span>
+<span>Updated 2 days ago</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden hover:shadow-lg hover:border-outline-variant transition-all duration-200 group flex flex-col">
+<div class="aspect-video bg-surface-container flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant/40 group-hover:scale-110 transition-transform duration-300">image</span>
+<span class="absolute top-3 right-3 px-2.5 py-1 bg-[#f0fdf4] border border-[#bbf7d0] rounded-md text-[11px] font-semibold text-[#166534] flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Approved
+            </span>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<h3 class="text-body-md font-semibold text-on-surface truncate mb-1" title="HG_Poster_Teaser_01.jpg">HG_Poster_Teaser_01.jpg</h3>
+<p class="text-body-sm text-on-surface-variant mb-4 truncate">The Hunger Games</p>
+<div class="mt-auto flex items-center justify-between text-[13px] text-on-surface-variant font-medium">
+<span>15.2 MB</span>
+<span>Updated 5 days ago</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden hover:shadow-lg hover:border-outline-variant transition-all duration-200 group flex flex-col">
+<div class="aspect-video bg-surface-container flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant/40 group-hover:scale-110 transition-transform duration-300">audio_file</span>
+<span class="absolute top-3 right-3 px-2.5 py-1 bg-[#eff6ff] border border-[#bfdbfe] rounded-md text-[11px] font-semibold text-[#1e40af] flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">pending</span> In Review
+            </span>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<h3 class="text-body-md font-semibold text-on-surface truncate mb-1" title="Saw_X_Theme_Mix3.wav">Saw_X_Theme_Mix3.wav</h3>
+<p class="text-body-sm text-on-surface-variant mb-4 truncate">Saw X</p>
+<div class="mt-auto flex items-center justify-between text-[13px] text-on-surface-variant font-medium">
+<span>145 MB</span>
+<span>Updated today</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden hover:shadow-lg hover:border-outline-variant transition-all duration-200 group flex flex-col">
+<div class="aspect-video bg-surface-container flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant/40 group-hover:scale-110 transition-transform duration-300">description</span>
+<span class="absolute top-3 right-3 px-2.5 py-1 bg-surface-container border border-surface-variant rounded-md text-[11px] font-semibold text-on-surface-variant flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">edit</span> Draft
+            </span>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<h3 class="text-body-md font-semibold text-on-surface truncate mb-1" title="Marketing_Deck_Q3.pdf">Marketing_Deck_Q3.pdf</h3>
+<p class="text-body-sm text-on-surface-variant mb-4 truncate">Corporate</p>
+<div class="mt-auto flex items-center justify-between text-[13px] text-on-surface-variant font-medium">
+<span>8.4 MB</span>
+<span>Updated 1 week ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-center gap-2 mt-12 border-t border-surface-variant pt-8">
+<button class="w-9 h-9 flex items-center justify-center rounded-md border border-surface-variant text-on-surface-variant hover:bg-surface-container-low transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-9 h-9 rounded-md bg-primary text-on-primary flex items-center justify-center text-sm font-semibold shadow-sm">1</button>
+<button class="w-9 h-9 rounded-md hover:bg-surface-container-low text-on-surface flex items-center justify-center text-sm font-medium transition-colors">2</button>
+<button class="w-9 h-9 rounded-md hover:bg-surface-container-low text-on-surface flex items-center justify-center text-sm font-medium transition-colors">3</button>
+<span class="text-on-surface-variant px-2 text-sm">...</span>
+<button class="w-9 h-9 rounded-md hover:bg-surface-container-low text-on-surface flex items-center justify-center text-sm font-medium transition-colors">12</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-md border border-surface-variant text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

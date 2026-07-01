@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lionsgate - Editor Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#735c00",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-container-highest": "#e1e3e4",
+                        "outline-variant": "#d0c5af",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-container-high": "#e7e8e9",
+                        "surface": "#ffffff", /* Updated to white for Luminous theme */
+                        "on-secondary-container": "#636262",
+                        "surface-tint": "#735c00",
+                        "inverse-surface": "#2e3132",
+                        "tertiary-container": "#abb4bd",
+                        "surface-container": "#ffffff", /* Updated to white for Luminous theme */
+                        "surface-container-lowest": "#F8F9FA", /* Updated for Luminous theme background */
+                        "on-tertiary-fixed-variant": "#3f484f",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary": "#575f67",
+                        "on-primary-container": "#554300",
+                        "tertiary-fixed": "#dbe4ed",
+                        "inverse-primary": "#e9c349",
+                        "surface-dim": "#d9dadb",
+                        "primary-fixed": "#ffe088",
+                        "primary-container": "#d4af37", /* Refined gold */
+                        "on-tertiary-fixed": "#141d23",
+                        "on-primary-fixed": "#241a00",
+                        "surface-bright": "#ffffff",
+                        "secondary-container": "#e2dfde",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#5f5e5e",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-background": "#191c1d",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-container": "#3d464d",
+                        "tertiary-fixed-dim": "#bfc8d0",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#4d4635",
+                        "on-secondary-fixed-variant": "#474746",
+                        "on-surface": "#191c1d",
+                        "outline": "#e5e7eb", /* Lighter outline for premium feel */
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-tertiary": "#ffffff",
+                        "background": "#F8F9FA", /* Very light gray */
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-error-container": "#93000a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem", /* 8px corners */
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "xl": "40px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "sm": "12px",
+                        "margin-desktop": "48px",
+                        "gutter": "24px",
+                        "base": "8px"
+                    },
+                    fontFamily: {
+                        "code": ["Inter", "sans-serif"],
+                        "label-md": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "display-lg": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 1px 2px 0 rgba(0, 0, 0, 0.01)'
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20; /* Thinner line icons */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.01em;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-surface border-r border-outline flex flex-col py-lg px-md z-50 shadow-subtle">
+<div class="mb-xl px-2">
+<h1 class="font-display-lg text-[28px] font-bold text-on-background tracking-tight leading-tight">Lionsgate</h1>
+<p class="font-label-md text-label-md text-secondary mt-1 truncate uppercase tracking-widest text-[10px]">Asset Management</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Active Tab: Editor -->
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-primary/5 text-primary font-semibold transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span class="font-label-md text-[13px]">Editor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-secondary font-medium hover:bg-black/5 hover:text-on-background transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+<span class="font-label-md text-[13px]">Reviewer</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-secondary font-medium hover:bg-black/5 hover:text-on-background transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span class="font-label-md text-[13px]">Assets</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-secondary font-medium hover:bg-black/5 hover:text-on-background transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">local_activity</span>
+<span class="font-label-md text-[13px]">Tickets</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-secondary font-medium hover:bg-black/5 hover:text-on-background transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+<span class="font-label-md text-[13px]">Activity</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-secondary font-medium hover:bg-black/5 hover:text-on-background transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-label-md text-[13px]">Admin</span>
+</a>
+</nav>
+<div class="mt-auto pt-8 border-t border-outline/50">
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-2.5 text-secondary hover:text-on-background hover:bg-black/5 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+<span class="font-label-md text-[13px]">Help</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-secondary hover:text-on-background hover:bg-black/5 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="font-label-md text-[13px]">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[260px] flex-1 flex flex-col min-h-screen bg-background">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-[72px] px-8 bg-surface border-b border-outline sticky top-0 z-40 shadow-subtle">
+<div class="flex items-center gap-8 flex-1">
+<nav class="hidden md:flex gap-8 h-full">
+<a class="text-primary font-medium border-b-2 border-primary-container flex items-center h-full text-[14px]" href="#">Recent</a>
+<a class="text-secondary hover:text-on-background transition-colors flex items-center h-full text-[14px] font-medium" href="#">Favorites</a>
+<a class="text-secondary hover:text-on-background transition-colors flex items-center h-full text-[14px] font-medium" href="#">Shared</a>
+</nav>
+<div class="relative w-80 ml-4">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">search</span>
+<input class="w-full bg-surface border border-outline rounded-lg py-2 pl-10 pr-4 text-body-sm text-on-background focus:outline-none focus:ring-1 focus:ring-primary-container focus:border-primary-container placeholder-secondary transition-shadow shadow-sm" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="text-secondary hover:text-on-background transition-colors">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+</button>
+<button class="text-secondary hover:text-on-background transition-colors">
+<span class="material-symbols-outlined text-[22px]">apps</span>
+</button>
+</div>
+<div class="h-6 w-px bg-outline mx-2"></div>
+<button class="bg-primary text-on-primary font-medium text-[13px] px-5 py-2 rounded-lg hover:bg-primary/90 transition-colors shadow-sm">
+                    Send for Approval
+                </button>
+<div class="flex items-center gap-3 ml-2 cursor-pointer hover:opacity-80 transition-opacity">
+<img alt="User Avatar" class="w-9 h-9 rounded-full object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDil2lnvNtLGEPnOJ9RmGEC-w3u-TbbUz_C1qvfuCtQPdoDKYqyJ72X3UOpiW7AMKLBJOgat3qfkOd5h2eyLvDZfiy7tZQr8Ppjp6yf2Rjr3q7RifsUDxOKPFAmSTJ_Sx1omNXETDfzRHCovPRxQzBSxwe6-TJNRMyy_kpu8COp5gqv6UI8fDcuIKGqPdm9uhGhAZgq1Eq7xeuwl0G2MzhoMNYv27S1Br06ZZeTZVFWEIV-hdImIWBZ-KmySzozk5op8jjJWva7-8is"/>
+<span class="font-medium text-[14px] text-on-background">John (Ed)</span>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-8 flex-1 grid grid-cols-12 gap-8 max-w-[1600px] mx-auto w-full">
+<!-- Welcome & Quick Stats -->
+<section class="col-span-12 mb-4">
+<h2 class="text-[24px] font-semibold text-on-background mb-6 tracking-tight">Editor Panel</h2>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+<!-- Stat Card 1 -->
+<div class="bg-surface rounded-lg p-5 border border-outline shadow-sm relative overflow-hidden group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[13px] font-medium text-secondary uppercase tracking-wider">Working</span>
+<span class="material-symbols-outlined text-[#e9c349] text-[20px]">edit_document</span>
+</div>
+<div class="text-[32px] font-semibold text-on-background tracking-tight">5</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface rounded-lg p-5 border border-outline shadow-sm relative overflow-hidden group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[13px] font-medium text-secondary uppercase tracking-wider">Pending</span>
+<span class="material-symbols-outlined text-[#007AFF] text-[20px]">hourglass_empty</span>
+</div>
+<div class="text-[32px] font-semibold text-on-background tracking-tight">12</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface rounded-lg p-5 border border-outline shadow-sm relative overflow-hidden group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[13px] font-medium text-secondary uppercase tracking-wider">Re-Edit</span>
+<span class="material-symbols-outlined text-error text-[20px]">sync_problem</span>
+</div>
+<div class="text-[32px] font-semibold text-on-background tracking-tight">3</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-surface rounded-lg p-5 border border-outline shadow-sm relative overflow-hidden group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[13px] font-medium text-secondary uppercase tracking-wider">For Approval</span>
+<span class="material-symbols-outlined text-primary text-[20px]">send</span>
+</div>
+<div class="text-[32px] font-semibold text-on-background tracking-tight">2</div>
+</div>
+<!-- Stat Card 5 -->
+<div class="bg-surface rounded-lg p-5 border border-outline shadow-sm relative overflow-hidden group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[13px] font-medium text-secondary uppercase tracking-wider">Total Assets</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">folder_open</span>
+</div>
+<div class="text-[32px] font-semibold text-on-background tracking-tight">22</div>
+</div>
+</div>
+</section>
+<!-- Section Tabs -->
+<section class="col-span-12 mb-6 border-b border-outline">
+<div class="flex gap-8">
+<a class="text-primary font-medium border-b-2 border-primary-container pb-3 flex items-center gap-2 text-[14px]" href="#">
+<span class="material-symbols-outlined text-[18px]">assignment_ind</span> My Assigned
+                    </a>
+<a class="text-secondary hover:text-on-background transition-colors pb-3 flex items-center gap-2 text-[14px] font-medium" href="#">
+<span class="material-symbols-outlined text-[18px]">inbox</span> Available
+                    </a>
+<a class="text-secondary hover:text-on-background transition-colors pb-3 flex items-center gap-2 text-[14px] font-medium" href="#">
+<span class="material-symbols-outlined text-[18px]">outbox</span> Sent for Review
+                    </a>
+<a class="text-secondary hover:text-on-background transition-colors pb-3 flex items-center gap-2 text-[14px] font-medium" href="#">
+<span class="material-symbols-outlined text-[18px]">replay</span> Re-Edit
+                    </a>
+<a class="text-secondary hover:text-on-background transition-colors pb-3 flex items-center gap-2 text-[14px] font-medium" href="#">
+<span class="material-symbols-outlined text-[18px]">history</span> Recent
+                    </a>
+</div>
+</section>
+<!-- Main Assets Grid -->
+<section class="col-span-12 xl:col-span-8">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-[20px] font-semibold text-on-background">My Assigned Assets</h3>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[18px]">search</span>
+<input class="w-56 bg-surface border border-outline rounded-lg py-2 pl-9 pr-3 text-[13px] text-on-background focus:outline-none focus:ring-1 focus:ring-primary-container focus:border-primary-container placeholder-secondary shadow-sm transition-shadow" placeholder="Search assets..." type="text"/>
+</div>
+<div class="relative">
+<select class="bg-surface border border-outline rounded-lg py-2 pl-3 pr-8 text-[13px] text-on-background focus:outline-none focus:ring-1 focus:ring-primary-container focus:border-primary-container appearance-none shadow-sm font-medium">
+<option>Status ▾</option>
+</select>
+</div>
+<div class="flex gap-2 ml-2">
+<button class="p-2 bg-surface border border-outline rounded-lg text-primary hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="p-2 bg-surface border border-outline rounded-lg text-secondary hover:text-on-background hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Asset Card 1 -->
+<div class="bg-surface rounded-lg border border-outline shadow-sm hover:shadow-soft hover:border-primary-container/50 transition-all group cursor-pointer p-5 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<h4 class="text-[16px] font-semibold text-on-background truncate pr-2">COOTIES</h4>
+<span class="bg-[#e9c349]/10 text-[#9e7f00] text-[12px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5 border border-[#e9c349]/20 whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-[#e9c349]"></span> Working
+                            </span>
+</div>
+<div class="space-y-2.5 mb-6 flex-1">
+<p class="text-[13px] text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> 6/24
+                            </p>
+<p class="text-[13px] text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">movie</span> Avail
+                            </p>
+</div>
+<div class="pt-4 border-t border-outline flex justify-end">
+<button class="text-primary text-[13px] font-semibold hover:text-primary-container transition-colors flex items-center gap-1">
+                                Open <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Asset Card 2 -->
+<div class="bg-surface rounded-lg border border-outline shadow-sm hover:shadow-soft hover:border-primary-container/50 transition-all group cursor-pointer p-5 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<h4 class="text-[16px] font-semibold text-on-background truncate pr-2">THE BANK JOB</h4>
+<span class="bg-[#007AFF]/10 text-[#005bb5] text-[12px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5 border border-[#007AFF]/20 whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-[#007AFF]"></span> Pending
+                            </span>
+</div>
+<div class="space-y-2.5 mb-6 flex-1">
+<p class="text-[13px] text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> 6/24
+                            </p>
+<p class="text-[13px] text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">movie</span> Avail
+                            </p>
+</div>
+<div class="pt-4 border-t border-outline flex justify-end">
+<button class="text-primary text-[13px] font-semibold hover:text-primary-container transition-colors flex items-center gap-1">
+                                Open <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Asset Card 3 -->
+<div class="bg-surface rounded-lg border border-outline shadow-sm hover:shadow-soft hover:border-primary-container/50 transition-all group cursor-pointer p-5 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<h4 class="text-[16px] font-semibold text-on-background truncate pr-2">RARE BIRDS</h4>
+<span class="bg-[#28CD41]/10 text-[#1e9931] text-[12px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5 border border-[#28CD41]/20 whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-[#28CD41]"></span> Rendered
+                            </span>
+</div>
+<div class="space-y-2.5 mb-6 flex-1">
+<p class="text-[13px] text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> 7/8
+                            </p>
+<p class="text-[13px] text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">movie</span> Avail
+                            </p>
+</div>
+<div class="pt-4 border-t border-outline flex justify-end">
+<button class="text-primary text-[13px] font-semibold hover:text-primary-container transition-colors flex items-center gap-1">
+                                Open <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Asset Card 4 -->
+<div class="bg-surface rounded-lg border border-outline shadow-sm hover:shadow-soft hover:border-primary-container/50 transition-all group cursor-pointer p-5 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<h4 class="text-[16px] font-semibold text-on-background truncate pr-2">HARD CANDY</h4>
+<span class="bg-error/10 text-error text-[12px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5 border border-error/20 whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Re-Edit
+                            </span>
+</div>
+<div class="space-y-2.5 mb-6 flex-1">
+<p class="text-[13px] text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> 6/24
+                            </p>
+<p class="text-[13px] text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">movie</span> Missing
+                            </p>
+</div>
+<div class="pt-4 border-t border-outline flex justify-end">
+<button class="text-primary text-[13px] font-semibold hover:text-primary-container transition-colors flex items-center gap-1">
+                                Open <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-8">
+<span class="text-[13px] text-secondary font-medium">Page 1 of 3</span>
+</div>
+</section>
+<!-- Activity Feed Sidebar -->
+<section class="col-span-12 xl:col-span-4 h-full">
+<div class="bg-surface rounded-lg border border-outline shadow-sm h-full flex flex-col max-h-[800px]">
+<div class="p-6 border-b border-outline flex justify-between items-center">
+<h3 class="text-[18px] font-semibold text-on-background">Activity Feed</h3>
+<span class="bg-primary/10 text-primary text-[12px] font-medium px-2.5 py-1 rounded-full border border-primary/20 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> Live
+                        </span>
+</div>
+<div class="p-6 flex-1 overflow-y-auto space-y-8">
+<!-- Feed Item -->
+<div class="flex gap-4 relative">
+<div class="absolute left-4 top-8 bottom-[-32px] w-px bg-outline"></div>
+<div class="w-8 h-8 rounded-full bg-[#28CD41]/10 flex items-center justify-center shrink-0 relative z-10">
+<span class="material-symbols-outlined text-[16px] text-[#28CD41]">check</span>
+</div>
+<div>
+<p class="text-[14px] text-on-background"><span class="font-semibold">Sarah Jenkins</span> approved <span class="text-primary font-medium cursor-pointer hover:underline">JW4_TRAILER_V2.mov</span></p>
+<span class="text-[12px] text-secondary mt-1 block">10 mins ago</span>
+</div>
+</div>
+<!-- Feed Item -->
+<div class="flex gap-4 relative">
+<div class="absolute left-4 top-8 bottom-[-32px] w-px bg-outline"></div>
+<div class="w-8 h-8 rounded-full bg-[#e9c349]/10 flex items-center justify-center shrink-0 relative z-10">
+<span class="material-symbols-outlined text-[16px] text-[#9e7f00]">chat_bubble_outline</span>
+</div>
+<div>
+<p class="text-[14px] text-on-background"><span class="font-semibold">Mike Ross</span> commented on <span class="text-primary font-medium cursor-pointer hover:underline">HG_BALLAD_TEASER.mp4</span></p>
+<div class="bg-background rounded-lg p-3 mt-2 border border-outline">
+<p class="text-[13px] text-secondary italic">"Audio sync seems off at 01:24:10, please review."</p>
+</div>
+<span class="text-[12px] text-secondary mt-2 block">45 mins ago</span>
+</div>
+</div>
+<!-- Feed Item -->
+<div class="flex gap-4 relative">
+<div class="absolute left-4 top-8 bottom-[-32px] w-px bg-outline"></div>
+<div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center shrink-0 relative z-10">
+<span class="material-symbols-outlined text-[16px] text-error">priority_high</span>
+</div>
+<div>
+<p class="text-[14px] text-on-background">QC Failed for <span class="text-primary font-medium cursor-pointer hover:underline">EXPENDABLES4_TVSPOT.mxf</span></p>
+<span class="text-[12px] text-secondary mt-1 block">2 hours ago</span>
+</div>
+</div>
+<!-- Feed Item -->
+<div class="flex gap-4 relative">
+<div class="w-8 h-8 rounded-full bg-[#007AFF]/10 flex items-center justify-center shrink-0 relative z-10">
+<span class="material-symbols-outlined text-[16px] text-[#007AFF]">file_upload</span>
+</div>
+<div>
+<p class="text-[14px] text-on-background">New asset uploaded: <span class="text-primary font-medium cursor-pointer hover:underline">SAW_X_PROMO_V1.mov</span></p>
+<span class="text-[12px] text-secondary mt-1 block">3 hours ago</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

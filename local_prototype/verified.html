@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Email Verified — Lionsgate</title>
+<script>var base=location.href.substring(0,location.href.lastIndexOf('/'));if (location.hash.includes('error=')) location.replace(base+'/expired-link.html');</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Inter',sans-serif; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f8f9fa; color:#191c1d; }
+.card { background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:48px; max-width:420px; width:90%; text-align:center; }
+.icon-wrap { width:64px;height:64px;border-radius:50%;background:#f3f4f5;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;border:1px solid rgba(208,197,175,0.3); }
+.icon-wrap svg { width:32px;height:32px;fill:#735c00; }
+h1 { font-size:22px; font-weight:600; color:#735c00; margin-bottom:4px; }
+.sub { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; color:#4d4635; opacity:.7; margin-bottom:24px; }
+p { font-size:15px; line-height:1.6; color:#5f5e5e; margin-bottom:24px; }
+.btn { display:inline-flex; align-items:center;gap:8px; padding:12px 28px; border-radius:8px; font-size:14px; font-weight:600; background:#735c00;color:#fff; text-decoration:none; transition:opacity .15s; }
+.btn:hover { opacity:.85; }
+.btn svg { width:18px;height:18px;fill:#fff; }
+hr { border:none; height:1px; background:#e5e7eb; margin-bottom:24px; }
+</style>
+</head>
+<body>
+<div class="card">
+<div class="icon-wrap">
+<svg viewBox="0 0 24 24"><path d="M22 5.5L9 18.5l-5-5 1.41-1.41L9 15.67 20.59 4.09 22 5.5zM5.5 13.5l-3-3 1.41-1.41L5.5 10.67 9 7.18 10.41 8.59l-4.91 4.91z"/></svg>
+</div>
+<h1>Lionsgate</h1>
+<div class="sub">Asset Management</div>
+<hr />
+<div id="status">Verifying your email…</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js"></script>
+<script>
+const sb = supabase.createClient('https://pvkakagdizthpizykbqu.supabase.co', 'sb_publishable_8ZwrmJmmnxcsPcS2SInf6g_qfqJWs9P');
+const base = location.href.substring(0, location.href.lastIndexOf('/'));
+(function(){
+  if (location.hash.includes('error=')) { location.replace(base+'/expired-link.html'); return; }
+  var params = new URLSearchParams(location.hash.substring(1));
+  if (params.get('error_code')) { location.href = base+'/expired-link.html'; return; }
+})();
+(async () => {
+  const { data, error } = await sb.auth.getSession();
+  if (error || !data.session) { location.href = base+'/expired-link.html'; return; }
+  history.replaceState(null, '', window.location.pathname);
+  document.getElementById('status').innerHTML = '<p style="color:#22c55e;">Email verified successfully!</p><a href="'+base+'/#login" class="btn"><svg viewBox="0 0 24 24"><path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/></svg> Continue to Login</a>';
+})();
+</script>
+</body>
+</html>

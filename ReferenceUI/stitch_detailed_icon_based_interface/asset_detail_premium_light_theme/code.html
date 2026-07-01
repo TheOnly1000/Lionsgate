@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lionsgate Asset Management - Asset Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "primary": "#735c00",
+                "on-primary": "#ffffff",
+                "surface-container-low": "#f3f4f5",
+                "surface-container-highest": "#e1e3e4",
+                "outline-variant": "#d0c5af",
+                "on-primary-fixed-variant": "#574500",
+                "surface-container-high": "#e7e8e9",
+                "surface": "#f8f9fa",
+                "on-secondary-container": "#636262",
+                "surface-tint": "#735c00",
+                "inverse-surface": "#2e3132",
+                "tertiary-container": "#abb4bd",
+                "surface-container": "#edeeef",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-fixed-variant": "#3f484f",
+                "inverse-on-surface": "#f0f1f2",
+                "tertiary": "#575f67",
+                "on-primary-container": "#554300",
+                "tertiary-fixed": "#dbe4ed",
+                "inverse-primary": "#e9c349",
+                "surface-dim": "#d9dadb",
+                "primary-fixed": "#ffe088",
+                "primary-container": "#d4af37",
+                "on-tertiary-fixed": "#141d23",
+                "on-primary-fixed": "#241a00",
+                "surface-bright": "#f8f9fa",
+                "secondary-container": "#e2dfde",
+                "on-secondary": "#ffffff",
+                "secondary": "#5f5e5e",
+                "secondary-fixed": "#e5e2e1",
+                "on-background": "#191c1d",
+                "surface-variant": "#e1e3e4",
+                "on-tertiary-container": "#3d464d",
+                "tertiary-fixed-dim": "#bfc8d0",
+                "error-container": "#ffdad6",
+                "error": "#ba1a1a",
+                "on-surface-variant": "#4d4635",
+                "on-secondary-fixed-variant": "#474746",
+                "on-surface": "#191c1d",
+                "outline": "#7f7663",
+                "on-secondary-fixed": "#1c1b1b",
+                "on-tertiary": "#ffffff",
+                "background": "#f8f9fa",
+                "on-error": "#ffffff",
+                "secondary-fixed-dim": "#c8c6c5",
+                "primary-fixed-dim": "#e9c349",
+                "on-error-container": "#93000a"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "xl": "40px",
+                "lg": "24px",
+                "xs": "4px",
+                "md": "16px",
+                "margin-mobile": "16px",
+                "sm": "12px",
+                "margin-desktop": "48px",
+                "gutter": "32px",
+                "base": "8px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "code": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "body-sm": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "code": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "450"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-md": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+/* Custom styled select defaults */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+/* Ensure material icons are perfectly aligned */
+.material-symbols-outlined {
+    vertical-align: middle;
+}
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-screen py-lg px-sm bg-surface-container fixed left-0 top-0 h-full w-[240px] z-50">
+<div class="mb-xl px-3">
+<h1 class="font-display-lg text-display-lg font-bold text-primary text-[24px] leading-tight tracking-tight">Lionsgate Portal</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-xs">Enterprise Asset Manager</p>
+</div>
+<ul class="flex flex-col space-y-2 flex-grow">
+<li>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-black/5 transition-colors text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-black/5 transition-colors text-primary font-bold border-r-2 border-primary bg-black/5 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="clapperboard">leaderboard</span>
+<span class="font-label-md text-label-md">Assets</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-black/5 transition-colors text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span class="font-label-md text-label-md">Tickets</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-black/5 transition-colors text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="font-label-md text-label-md">Sync</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-black/5 transition-colors text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto pt-lg border-t border-outline-variant px-3">
+<button class="w-full bg-primary text-on-primary font-bold py-2.5 rounded-DEFAULT mb-md hover:opacity-90 transition-opacity">Create Ticket</button>
+<ul class="flex flex-col space-y-2">
+<li>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-black/5 transition-colors text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-black/5 transition-colors text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex flex-col flex-1 ml-[240px] h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-16 px-margin-desktop bg-background border-b border-outline-variant z-40 flex-shrink-0">
+<div class="flex items-center space-x-xl">
+<span class="font-headline-md text-[20px] font-semibold text-on-background">Lionsgate Asset Management</span>
+<nav class="hidden md:flex space-x-lg h-full items-end pb-[1px]">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md py-4" href="#">Recent</a>
+<a class="text-primary font-semibold border-b-2 border-primary pb-[14px] pt-4 font-body-md text-body-md opacity-80" href="#">Shared</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md py-4" href="#">Favorites</a>
+</nav>
+</div>
+<div class="flex items-center space-x-lg">
+<button class="bg-primary-container text-on-primary-container font-semibold px-5 py-2 rounded-lg hover:bg-[#c39f2f] transition-colors font-label-md text-[13px] shadow-sm">Send for Approval</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto p-margin-desktop bg-surface">
+<div class="flex justify-between items-center mb-lg">
+<a class="flex items-center text-on-surface-variant hover:text-on-surface transition-colors font-body-sm font-medium" href="#">
+<span class="material-symbols-outlined mr-2 text-[20px]">arrow_back</span>
+Back to Assets
+</a>
+<h2 class="font-headline-md text-[28px] font-semibold text-on-background">Asset Detail: COOTIES</h2>
+</div>
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Left Column: Asset Info & Activity -->
+<div class="w-full lg:w-2/3 flex flex-col gap-xl">
+<!-- Asset Info Card -->
+<div class="bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-sm flex flex-col gap-lg">
+<h3 class="font-headline-md text-[18px] font-semibold text-on-background border-b border-outline-variant/50 pb-sm">Asset Info</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-lg gap-y-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Title</span>
+<span class="font-body-md text-on-surface font-medium text-[16px]">COOTIES</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Files Avail</span>
+<span class="font-body-md text-on-surface font-medium text-[16px]">June</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Air Date</span>
+<span class="font-body-md text-on-surface font-medium text-[16px]">6/24</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Sheet Row</span>
+<span class="font-body-md text-on-surface font-medium text-[16px]">3 (synced)</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-sm">
+<span class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">movie</span> Video Location</span>
+<div class="flex items-center justify-between bg-surface-container-low border border-outline-variant/60 rounded-lg px-3 py-2.5">
+<span class="font-code text-[13px] text-on-surface truncate break-all">/amagicloud-lionsgate/Media/S3/MOVSP/9382654.mp4</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center ml-xs" title="Copy">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">description</span> CC Location</span>
+<span class="font-body-md text-on-surface text-[15px]">Not available</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">edit_note</span> Notes</span>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-lg p-3 font-body-md text-[15px] text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 resize-y min-h-[100px] placeholder:text-on-surface-variant/60" placeholder="Add notes here..."></textarea>
+<button class="mt-2 bg-surface-container-low hover:bg-surface-variant text-on-surface font-label-md font-medium px-4 py-2 rounded-lg w-max border border-outline-variant/60 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span> Save Notes
+</button>
+</div>
+</div>
+<!-- Tabs & Tables Area -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex flex-col overflow-hidden">
+<div class="flex border-b border-outline-variant/60 bg-surface-container/30">
+<button class="flex-1 py-3 font-headline-md text-[15px] font-semibold text-primary border-b-2 border-primary bg-surface-container-lowest transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">list_alt</span> Tickets
+</button>
+<button class="flex-1 py-3 font-headline-md text-[15px] font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/50 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">chat_bubble_outline</span> Comments
+</button>
+<button class="flex-1 py-3 font-headline-md text-[15px] font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/50 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">history</span> Activity
+</button>
+</div>
+<div class="p-lg flex flex-col gap-lg">
+<div class="flex justify-between items-center">
+<h4 class="font-headline-md text-[16px] font-medium text-on-surface">Tickets — <span class="text-on-surface-variant">2 open</span></h4>
+<button class="bg-primary-container/20 text-on-primary-container hover:bg-primary-container/40 font-label-md font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-2 border border-primary/20">
+<span class="material-symbols-outlined text-[18px]">add</span> Create Ticket
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md border-collapse">
+<thead class="text-on-surface-variant font-label-md font-semibold uppercase tracking-wider text-[11px] border-b border-outline-variant/40">
+<tr>
+<th class="px-4 py-3 pb-2 font-semibold">#</th>
+<th class="px-4 py-3 pb-2 font-semibold">Title</th>
+<th class="px-4 py-3 pb-2 font-semibold">Status</th>
+<th class="px-4 py-3 pb-2 font-semibold">Prio</th>
+<th class="px-4 py-3 pb-2 font-semibold">Asgn</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-low/50 transition-colors cursor-pointer group">
+<td class="px-4 py-4 text-on-surface-variant text-[14px]">42</td>
+<td class="px-4 py-4 text-on-surface font-medium text-[15px]">Missing CC files</td>
+<td class="px-4 py-4"><span class="inline-flex items-center gap-1.5 text-green-700 font-medium text-[14px] bg-green-50 px-2 py-0.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>Open</span></td>
+<td class="px-4 py-4"><span class="text-red-700 font-medium text-[14px] bg-red-50 px-2 py-0.5 rounded-full">High</span></td>
+<td class="px-4 py-4 text-on-surface text-[14px]">Jane</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors cursor-pointer group">
+<td class="px-4 py-4 text-on-surface-variant text-[14px]">41</td>
+<td class="px-4 py-4 text-on-surface font-medium text-[15px]">Wrong file path</td>
+<td class="px-4 py-4"><span class="inline-flex items-center gap-1.5 text-amber-700 font-medium text-[14px] bg-amber-50 px-2 py-0.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>In Prgr.</span></td>
+<td class="px-4 py-4"><span class="text-green-700 font-medium text-[14px] bg-green-50 px-2 py-0.5 rounded-full">Low</span></td>
+<td class="px-4 py-4 text-on-surface text-[14px]">Mike</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Workflow Panel -->
+<div class="w-full lg:w-1/3 flex flex-col gap-lg">
+<div class="bg-surface-container-low rounded-xl p-lg border border-outline-variant/60 shadow-sm flex flex-col gap-md">
+<h3 class="font-headline-md text-[18px] font-semibold text-on-background border-b border-outline-variant/50 pb-sm mb-xs">Workflow</h3>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Editor Status</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-lg py-2.5 pl-3 pr-10 text-on-surface font-body-md text-[15px] focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 shadow-sm transition-shadow">
+<option value="Pending">Pending</option>
+<option selected="" value="Working">Working</option>
+<option value="Converted">Converted</option>
+<option value="Downloaded">Downloaded</option>
+<option value="Issue">Issue</option>
+<option value="Ready to upload">Ready to upload</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Reviewer Status</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-lg py-2.5 pl-3 pr-10 text-on-surface font-body-md text-[15px] focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 shadow-sm transition-shadow">
+<option selected="" value="Pending">Pending</option>
+<option value="Need to Review">Need to Review</option>
+<option value="Reviewing">Reviewing</option>
+<option value="Review Done">Review Done</option>
+<option value="Approved">Approved</option>
+<option value="Issue">Issue</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Amagi Comments</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-lg py-2.5 pl-3 pr-10 text-on-surface font-body-md text-[15px] focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 shadow-sm transition-shadow">
+<option value="Approved">Approved</option>
+<option value="Working">Working</option>
+<option value="Pending">Pending</option>
+<option selected="" value="Hires Uploaded">Hires Uploaded</option>
+<option value="Ready to Share">Ready to Share</option>
+<option value="Received">Received</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Assigned Editor</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-lg py-2.5 pl-3 pr-10 text-on-surface font-body-md text-[15px] focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 shadow-sm transition-shadow">
+<option selected="" value="John">John (me)</option>
+<option value="Jane">Jane</option>
+<option value="Mike">Mike</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Assigned Reviewer</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-lg py-2.5 pl-3 pr-10 text-on-surface-variant font-body-md text-[15px] focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 shadow-sm transition-shadow">
+<option selected="" value="">Not assigned</option>
+<option value="Jane">Jane</option>
+<option value="Mike">Mike</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-semibold text-[15px] py-3.5 rounded-lg mt-4 hover:bg-[#c39f2f] transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-lg">
+<span class="material-symbols-outlined text-[20px]">send</span>
+Send for Approval
+</button>
+</div>
+<div class="bg-surface-container-low rounded-xl p-lg border border-outline-variant/60 shadow-sm flex flex-col gap-3 text-center">
+<div class="flex justify-between items-center px-2">
+<span class="font-label-md text-on-surface-variant font-medium text-[13px]">Last Synced:</span>
+<span class="font-body-md text-on-surface font-medium text-[14px] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">schedule</span> 2m ago
+</span>
+</div>
+<div class="flex justify-between items-center px-2">
+<span class="font-label-md text-on-surface-variant font-medium text-[13px]">Status:</span>
+<span class="font-body-md text-green-700 font-medium text-[14px] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> In sync
+</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
